@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Aplex Tecnología — Design System
+   Paleta violeta + azul eléctrico, modo híbrido (hero/footer oscuros, body claro).
+   Todos los colores en HSL. No usar colores directos en componentes.
+*/
+
+@layer base {
+  :root {
+    /* Light corporate */
+    --background: 240 30% 99%;
+    --foreground: 240 30% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 30% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 30% 10%;
+
+    /* Brand: violeta principal */
+    --primary: 262 83% 58%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 258 90% 70%;
+
+    /* Brand secundario: azul eléctrico */
+    --secondary: 230 92% 60%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Acento cian */
+    --accent: 190 95% 55%;
+    --accent-foreground: 240 30% 10%;
+
+    --muted: 240 20% 96%;
+    --muted-foreground: 240 10% 40%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 20% 90%;
+    --input: 240 20% 92%;
+    --ring: 262 83% 58%;
+
+    --radius: 0.85rem;
+
+    /* Dark surfaces (hero, footer, secciones oscuras) */
+    --surface-dark: 245 50% 8%;
+    --surface-dark-2: 248 45% 12%;
+    --surface-dark-foreground: 240 20% 96%;
+    --surface-dark-muted: 240 15% 70%;
+    --surface-dark-border: 250 30% 22%;
+
+    /* Gradientes */
+    --gradient-brand: linear-gradient(135deg, hsl(262 83% 58%) 0%, hsl(230 92% 60%) 100%);
+    --gradient-brand-soft: linear-gradient(135deg, hsl(262 83% 58% / 0.12) 0%, hsl(230 92% 60% / 0.12) 100%);
+    --gradient-hero: radial-gradient(ellipse at top left, hsl(262 83% 58% / 0.35), transparent 55%),
+                     radial-gradient(ellipse at bottom right, hsl(230 92% 60% / 0.3), transparent 55%),
+                     linear-gradient(180deg, hsl(245 50% 8%), hsl(248 45% 12%));
+    --gradient-text: linear-gradient(135deg, hsl(258 90% 75%), hsl(190 95% 65%));
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%), hsl(240 30% 98%));
+
+    /* Sombras */
+    --shadow-elegant: 0 20px 50px -20px hsl(262 83% 58% / 0.35);
+    --shadow-soft: 0 8px 30px -10px hsl(240 30% 20% / 0.12);
+    --shadow-glow: 0 0 60px hsl(262 83% 58% / 0.4);
+
+    /* Transiciones */
+    --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background-color: hsl(var(--primary) / 0.25);
+    color: hsl(var(--foreground));
+  }
+}
+
+@layer utilities {
+  .bg-gradient-brand {
+    background-image: var(--gradient-brand);
+  }
+  .bg-gradient-brand-soft {
+    background-image: var(--gradient-brand-soft);
+  }
+  .bg-gradient-hero {
+    background-image: var(--gradient-hero);
+  }
+  .bg-surface-dark {
+    background-color: hsl(var(--surface-dark));
+  }
+  .bg-surface-dark-2 {
+    background-color: hsl(var(--surface-dark-2));
+  }
+  .text-gradient {
+    background-image: var(--gradient-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .shadow-elegant {
+    box-shadow: var(--shadow-elegant);
+  }
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  .grid-pattern {
+    background-image:
+      linear-gradient(hsl(var(--surface-dark-border) / 0.4) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--surface-dark-border) / 0.4) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  }
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
